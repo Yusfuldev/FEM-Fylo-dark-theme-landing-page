@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 html {
+  overflow-x: hidden;
+  max-width: 1440px;
   font-size: 62.5%;
   --intro-email-bg: hsl(217, 28%, 15%);
   --main-bg: hsl(218, 28%, 13%);
@@ -36,17 +38,16 @@ body {
   font-family: "open-sans", sans-serif;
   font-size: 1.4rem;
   color: hsl(0, 0%, 100%);
-  max-width: 100%;
-  overflow-x: hidden;
+  max-width: 1440px;
 }
 
 header,
 nav,
 h1,
 h2,
+h2,
 h3,
-h4,
-h5 {
+h4 {
   font-family: "raleway", sans-serif;
 }
 
@@ -85,7 +86,6 @@ nav {
 
 /* Hero section */
 .hero {
-  margin: 0 auto;
   background-color: var(--intro-email-bg);
   text-align: center;
   padding-top: 4rem;
@@ -94,11 +94,11 @@ nav {
   align-items: center;
 }
 .hero-image {
-  width: 30%;
+  max-width: 30%;
 }
 .hero-text {
- width: 30%;
-  padding: 4rem 0 2rem;
+  width: 30%;
+  padding-top: 4rem;
   z-index: 1;
 }
 .hero h1 {
@@ -111,11 +111,11 @@ nav {
 }
 button {
   background-color: var(--blue-action);
-  width: 50%;
+  min-width: 20rem;
   padding: 1rem;
   border-radius: 3rem;
   border: none;
-  margin: 2rem 0 0 0;
+  margin: 2rem auto 0 auto;
   cursor: pointer;
   color: hsl(0, 0%, 100%);
 }
@@ -136,7 +136,11 @@ button:hover {
   background-color: var(--main-bg);
   padding: 0 30rem;
 }
+.intro-wrapper p {
+  padding: 2rem 1.8rem;
+}
 .intro-wrapper {
+  max-width: 90%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -146,7 +150,7 @@ button:hover {
 }
 .intro-top,
 .intro-bottom {
-  gap: 5rem;
+  gap: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -156,7 +160,7 @@ button:hover {
 .access,
 .collab {
   flex: 1;
-  width: 25rem;
+  width: 30rem;
 }
 
 /* illustration section */
@@ -167,16 +171,24 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  max-width: inherit;
 }
-.illustration-image img {
-  width: 95%;
+.illustration-image {
+  flex: 1 1 40rem;
+  max-width: 95%;
   margin: 0 0 0 auto;
 }
+.illustration-image img {
+  max-width: 95%;
+}
 .illustration-text {
-  padding: 0 8rem 0 2rem;
+  flex: 1 1 40rem;
+  /* margin: 0 8rem 0 4rem; */
   line-height: 2rem;
 }
-.illustration-text h3 {
+.illustration-text h2 {
   padding-bottom: 1rem;
 }
 .illustration a {
@@ -205,6 +217,7 @@ button:hover {
   align-items: center;
   position: relative;
   gap: 2rem;
+  z-index: 1;
 }
 .card {
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.1);
@@ -212,11 +225,18 @@ button:hover {
   padding: 2rem 1rem;
   background-color: var(--testimonial-bg);
   position: relative;
-  z-index: 1;
 }
-.card img {
+
+.card1 .quote {
+  margin-top: -5rem;
+  margin-left: -2rem;
+  position: absolute;
+  z-index: -1;
+}
+.card .pic {
   border-radius: 50%;
   width: 15%;
+  height: 15%;
 }
 .card .profile {
   margin-top: 1rem;
@@ -227,12 +247,7 @@ button:hover {
 .profile p {
   font-size: smaller;
 }
-.testimony::before {
-  content: url("./images/bg-quotes.png");
-  position: absolute;
-  left: 6rem;
-  top: -3rem;
-}
+
 .sign-up {
   box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.1);
   background-color: var(--testimonial-bg);
@@ -257,13 +272,13 @@ form {
   justify-content: center;
 }
 form button {
-  width: 30%;
+  min-width: 30%;
   margin: 1rem;
   padding: 1rem 0.5rem;
 }
 input {
   width: 60%;
-  padding: 1rem 0.5rem;
+  padding: 1rem 1rem;
   border-radius: 2rem;
   outline: none;
 }
@@ -274,8 +289,8 @@ footer {
   background-color: var(--footer-bg);
 }
 .footer {
-  width: 95%;
-  margin: 0 0 0 auto;
+  max-width: 95%;
+  margin: 0 auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -315,12 +330,10 @@ footer .img {
   gap: 5px;
 }
 .footer svg {
-  width: 20px;
   border-radius: 50%;
   padding: 0.5rem;
   width: 25px;
   height: 25px;
-
   border: white 0.1px solid;
 }
 .footer svg:hover {
@@ -330,17 +343,32 @@ footer .img {
 
 /* media query */
 @media (max-width: 375px) {
+  html,
+  body {
+    max-width: 375px;
+    /* overflow-y: hidden; */
+  }
   .curvy-desktop {
     display: none;
   }
+
   nav {
-    justify-content: space-evenly;
-    padding: 4rem 2rem;
+    align-items: center;
     width: 100%;
   }
-  .navlinks {
-    width: 20rem;
+  .logo {
+    flex: 1;
   }
+  .logo img {
+    width: 5rem;
+  }
+  .navlinks {
+    justify-content: center;
+    width: 10rem;
+    flex: 2;
+    gap: 2rem;
+  }
+
   .hero {
     background-color: var(--intro-email-bg);
   }
@@ -362,8 +390,9 @@ footer .img {
   }
   .intro-wrapper {
     width: 100%;
-    padding-top: 15rem;
+    padding-top: 20rem;
     text-align: center;
+    gap: 1rem;
   }
   .intro-top,
   .intro-bottom {
@@ -371,7 +400,6 @@ footer .img {
     flex-direction: column;
     align-items: center;
   }
-
   .security,
   .file,
   .access,
@@ -383,23 +411,25 @@ footer .img {
   .illustration {
     width: 100%;
     flex-direction: column;
+    gap: 0rem;
+    padding: 0;
+  }
+  .illustration-image {
+    margin-bottom: 0rem;
   }
   .illustration-image img {
     width: 90%;
-    margin: 0 5% 5rem;
   }
   .illustration-text {
-    padding: 2rem;
+    padding: 0 2rem;
     line-height: 2rem;
   }
   .cards {
     padding: 0 2rem;
     flex-direction: column;
   }
-  .testimony::before {
-    left: 3rem;
-  }
-  .testimony{
+
+  .testimony {
     padding-bottom: 25rem;
   }
   .sign-up {
@@ -419,10 +449,9 @@ footer .img {
   input {
     width: 80%;
   }
-  footer{
-     /* padding-top: 32rem; */
-  }
+
   .footer {
+    padding-left: 3rem;
     flex-direction: column;
   }
   footer .img {
